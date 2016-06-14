@@ -17,12 +17,10 @@ module LunarBlessing
   describe "#to_solar" do
 
     context "2016-01-01" do
-
       let(:date) { Date.new(year: 2016, month: 1, day: 1)}
       it "should return 2016-02-08" do
         expect(date.to_solar).to eq('2016-02-08')
       end
-
     end
 
     context "2017-01-01" do
@@ -57,6 +55,20 @@ module LunarBlessing
       let(:date) { Date.new(year: 1982, month: 12, day: 16)}
       it "should return 1983-01-29" do
         expect(date.to_solar).to eq('1983-01-29')
+      end
+    end
+
+    context "2017-06-06" do
+      let(:date) { Date.new(year: 2017, month: 06, day: 06)}
+      it "should return 2017-06-29" do
+        expect(date.to_solar).to eq('2017-06-29')
+      end
+    end
+
+    context "run 2017-06-06" do
+      let(:date) { Date.new(year: 2017, month: 06, day: 06, leap: true)}
+      it "should return 2017-07-28" do
+        expect(date.to_solar).to eq('2017-07-28')
       end
 
     end

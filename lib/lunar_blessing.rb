@@ -8,12 +8,13 @@ module LunarBlessing
 
     MIN_YEAR = 1900
 
-    attr_reader :year, :month, :day
+    attr_reader :year, :month, :day, :leap
 
-    def initialize(year:, month:, day:)
+    def initialize(year:, month:, day:, leap: false)
       @year = year
       @month = month
       @day = day
+      @leap = leap
       @leap_month = DATES_MAPPING[offset][0].to_i
 
       reset_month_by_leap
@@ -56,7 +57,9 @@ module LunarBlessing
     end
 
     def reset_month_by_leap
-      @month += 1 if @leap_month > 0 && month > @leap_month
+      if leap || (@leap_month > 0 && month > @leap_month)
+        @month += 1
+      end
     end
 
     def init_solar_date
