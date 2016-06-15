@@ -7,10 +7,13 @@ module LunarBlessing
     include DatesMaping
 
     MIN_YEAR = 1900
+    MAX_YEAR = 2099
 
     attr_reader :year, :month, :day, :leap
 
     def initialize(year:, month:, day:, leap: false)
+      raise OutOfRange.new(year) if year < MIN_YEAR || year > MAX_YEAR
+
       @year = year
       @month = month
       @day = day
@@ -69,5 +72,16 @@ module LunarBlessing
     end
 
 
+  end
+
+  class OutOfRange < StandardError
+    attr_reader :year
+    def initialize(year)
+      @year = year
+    end
+
+    def message
+      "The #{year} year you provided is out of range. This gem only support 1900 - 2099."
+    end
   end
 end

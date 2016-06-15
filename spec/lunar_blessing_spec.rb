@@ -70,6 +70,34 @@ module LunarBlessing
       it "should return 2017-07-28" do
         expect(date.to_solar).to eq('2017-07-28')
       end
+    end
+
+    describe OutOfRange do
+      context "< 1900" do
+        let(:date) { Date.new(year: 1800, month: 6, day: 6)}
+        it "should raise the error if the year is out of range" do
+          expect {date}.to raise_error(OutOfRange)
+        end
+      end
+
+      context "> 2099" do
+        let(:date) { Date.new(year: 2100, month: 6, day: 6)}
+        it "should raise the error if the year is out of range" do
+          expect {date}.to raise_error(OutOfRange)
+        end
+      end
+
+      context "message" do
+        it "should give the right message" do
+          begin
+            raise OutOfRange.new(1800)
+          rescue OutOfRange => e
+            expect(e.message).to eq('The 1800 year you provided is out of range. This gem only support 1900 - 2099.')
+            expect(e.year).to eq(1800)
+          end
+        end
+
+      end
 
     end
 
