@@ -34,7 +34,24 @@ module LunarBlessing
       solar_date.to_s
     end
 
+    def to_s(with_year: false)
+      mm = MONTH_MAPPING[month.to_i]
+      dd = DAY_MAPPING[day.to_i]
+
+      "#{with_year ? chinese_year : ''}#{mm}#{dd}"
+    end
+
     private
+
+    def chinese_year
+      yy = []
+      year.to_s.each_char do |y|
+        yy << YEAR_MAPPING[y.to_i]
+      end
+      yy << '年'
+      yy = yy.join
+
+    end
 
     def solar_date
       ::Date.new(solar_year, solar_month, solar_day) + (day - 1)

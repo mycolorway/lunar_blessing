@@ -79,8 +79,6 @@ module LunarBlessing
       end
     end
 
-
-
     describe OutOfRange do
       context "< 1900" do
         let(:date) { Date.new(year: 1800, month: 6, day: 6)}
@@ -107,6 +105,26 @@ module LunarBlessing
         end
 
       end
+
+    end
+
+    describe "#to_s" do
+      context "1983-05-5 with year" do
+        let(:date) { Date.new(year: 1983, month: 5, day: 5)}
+        it "should return '一九八三年五月初五'" do
+          expect(date.to_s(with_year: true)).to eq('一九八三年五月初五')
+          expect(date.to_s()).to eq('五月初五')
+        end
+      end
+
+      context "1980-12-22" do
+        let(:date) { Date.new(year: 1980, month: 12, day: 22)}
+        it "should return '一九八〇年腊月廿二'" do
+          expect(date.to_s(with_year: true)).to eq('一九八〇年腊月廿二')
+          expect(date.to_s()).to eq('腊月廿二')
+        end
+      end
+
 
     end
 
