@@ -23,10 +23,11 @@ module LunarBlessing
       reset_month_by_leap
       init_solar_date
 
-      if @month > 12
+      if @month > 12 || @solar_month > 12
         @solar_year += 1
         @solar_month -= 12
       end
+
     end
 
     def to_solar

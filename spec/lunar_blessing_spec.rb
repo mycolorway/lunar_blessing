@@ -72,6 +72,15 @@ module LunarBlessing
       end
     end
 
+    context "run 2015-12-28" do
+      let(:date) { Date.new(year: 2015, month: 12, day: 28)}
+      it "should return 2016-02-06" do
+        expect(date.to_solar).to eq('2016-02-06')
+      end
+    end
+
+
+
     describe OutOfRange do
       context "< 1900" do
         let(:date) { Date.new(year: 1800, month: 6, day: 6)}
