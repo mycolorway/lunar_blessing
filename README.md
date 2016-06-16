@@ -42,6 +42,6 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## TODO
 
-- [*] Add to_s for LunarBlessing:Date
+- [x] Add to_s for LunarBlessing:Date
 - [ ] Convert solar date to lunar date
 - [ ] Write document
