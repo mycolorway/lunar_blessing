@@ -28,6 +28,7 @@ module LunarBlessing
         @solar_month -= 12
       end
 
+      @month -= 1 if @leap_month > 0 && @month > @leap_month
     end
 
     def to_solar

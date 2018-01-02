@@ -117,6 +117,34 @@ module LunarBlessing
         end
       end
 
+      context "2017-12-28 with year" do
+        let(:date) { Date.new(year: 2017, month: 12, day:28)}
+        it "should return '二〇一七年腊月廿八'" do
+          expect(date.to_s(with_year: true)).to eq('二〇一七年腊月廿八')
+        end
+      end
+
+      context "2017-7-28 with year" do
+        let(:date) { Date.new(year: 2017, month: 7, day:28)}
+        it "should return '二〇一七年七月廿八'" do
+          expect(date.to_s(with_year: true)).to eq('二〇一七年七月廿八')
+        end
+      end
+
+      context "2017-3-28 with year" do
+        let(:date) { Date.new(year: 2017, month: 3, day:28)}
+        it "should return '二〇一七年三月廿八'" do
+          expect(date.to_s(with_year: true)).to eq('二〇一七年三月廿八')
+        end
+      end
+
+      context "2017-6-28 with year" do
+        let(:date) { Date.new(year: 2017, month: 6, day:28)}
+        it "should return '二〇一七年六月廿八'" do
+          expect(date.to_s(with_year: true)).to eq('二〇一七年六月廿八')
+        end
+      end
+
       context "1980-12-22" do
         let(:date) { Date.new(year: 1980, month: 12, day: 22)}
         it "should return '一九八〇年腊月廿二'" do
@@ -124,7 +152,6 @@ module LunarBlessing
           expect(date.to_s()).to eq('腊月廿二')
         end
       end
-
 
     end
 
